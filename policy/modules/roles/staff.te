@@ -14,6 +14,8 @@ userdom_unpriv_user_template(staff)
 # Local policy
 #
 
+init_stream_connect_script(staff_t)
+
 optional_policy(`
 	apache_role(staff_r, staff_t)
 ')

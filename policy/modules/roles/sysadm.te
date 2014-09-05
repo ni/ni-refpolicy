@@ -34,6 +34,7 @@ ubac_file_exempt(sysadm_t)
 ubac_fd_exempt(sysadm_t)
 
 init_exec(sysadm_t)
+init_stream_connect_script(sysadm_t)
 
 # Add/remove user home directories
 userdom_manage_user_home_dirs(sysadm_t)

@@ -123,6 +123,8 @@ term_dontaudit_use_console(system_dbusd_t)
 auth_use_nsswitch(system_dbusd_t)
 auth_read_pam_console_data(system_dbusd_t)
 
+init_stream_connect_script(system_dbusd_t)
+init_rw_script_stream_sockets(system_dbusd_t)
 init_use_fds(system_dbusd_t)
 init_use_script_ptys(system_dbusd_t)
 init_all_labeled_script_domtrans(system_dbusd_t)

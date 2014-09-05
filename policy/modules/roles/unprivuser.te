@@ -12,6 +12,8 @@ role user_r;
 
 userdom_unpriv_user_template(user)
 
+init_stream_connect_script(user_t)
+
 optional_policy(`
 	apache_role(user_r, user_t)
 ')

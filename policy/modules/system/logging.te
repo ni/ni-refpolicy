@@ -472,6 +472,8 @@ term_write_all_ttys(syslogd_t)
 auth_use_nsswitch(syslogd_t)
 
 init_use_fds(syslogd_t)
+init_stream_connect_script(syslogd_t)
+init_rw_script_stream_sockets(syslogd_t)
 
 # cjp: this doesnt make sense
 logging_send_syslog_msg(syslogd_t)
