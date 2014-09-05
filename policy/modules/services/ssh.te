@@ -254,6 +254,8 @@ files_tmp_filetrans(sshd_t, sshd_tmp_t, { dir file sock_file })
 kernel_search_key(sshd_t)
 kernel_link_key(sshd_t)
 
+auth_read_shadow(sshd_t)
+
 term_use_all_ptys(sshd_t)
 term_setattr_all_ptys(sshd_t)
 term_relabelto_all_ptys(sshd_t)
