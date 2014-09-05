@@ -285,6 +285,7 @@ kernel_request_load_module(ifconfig_t)
 kernel_search_network_sysctl(ifconfig_t)
 kernel_rw_net_sysctls(ifconfig_t)
 
+corecmd_exec_bin(ifconfig_t)
 corenet_rw_tun_tap_dev(ifconfig_t)
 
 dev_read_sysfs(ifconfig_t)
