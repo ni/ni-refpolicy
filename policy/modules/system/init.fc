@@ -13,6 +13,8 @@ ifdef(`distro_gentoo',`
 /etc/vmware/init\.d/vmware --	gen_context(system_u:object_r:initrc_exec_t,s0)
 /etc/x11/startDM\.sh	--	gen_context(system_u:object_r:initrc_exec_t,s0)
 ')
+/etc/init\.d/.*		--	gen_context(system_u:object_r:initrc_exec_t,s0)
+/usr/local/natinst/etc/init\.d/.*	--	gen_context(system_u:object_r:initrc_exec_t,s0)
 
 #
 # /dev

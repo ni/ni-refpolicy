@@ -21,6 +21,9 @@
 /sbin/syslogd\.sysklogd	--	gen_context(system_u:object_r:syslogd_exec_t,s0)
 /sbin/syslog-ng		--	gen_context(system_u:object_r:syslogd_exec_t,s0)
 
+/etc/syslog.conf*		gen_context(system_u:object_r:syslog_conf_t,s0)
+/etc/rc\.d/init\.d/syslog --	gen_context(system_u:object_r:syslogd_initrc_exec_t,s0)
+
 /usr/sbin/klogd		--	gen_context(system_u:object_r:klogd_exec_t,s0)
 /usr/sbin/metalog	--	gen_context(system_u:object_r:syslogd_exec_t,s0)
 /usr/sbin/rklogd	--	gen_context(system_u:object_r:klogd_exec_t,s0)
@@ -39,6 +42,10 @@ ifdef(`distro_suse', `
 
 /var/axfrdns/log/main(/.*)?	gen_context(system_u:object_r:var_log_t,s0)
 /var/dnscache/log/main(/.*)?	gen_context(system_u:object_r:var_log_t,s0)
+
+/var/local/natinst/log(/.*)?		gen_context(system_u:object_r:var_log_t,s0)
+/var/local/natinst/nisyslog(/.*)?	gen_context(system_u:object_r:var_log_t,s0)
+/var/local/natinst/tracelogs(/.*)?	gen_context(system_u:object_r:var_log_t,s0)
 
 /var/log		-d	gen_context(system_u:object_r:var_log_t,s0-mls_systemhigh)
 /var/log		-l	gen_context(system_u:object_r:var_log_t,s0-mls_systemhigh)
