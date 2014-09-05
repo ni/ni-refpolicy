@@ -911,3 +911,8 @@ optional_policy(`
 optional_policy(`
 	zebra_read_config(initrc_t)
 ')
+
+optional_policy(`
+	nirtcfg_domtrans(initrc_t)
+')
+

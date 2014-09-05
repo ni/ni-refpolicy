@@ -1,0 +1,104 @@
+## <summary>Policy for nirtcfg</summary>
+
+########################################
+## <summary>
+##  Execute nirtcfg in the nirtcfg_t domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`nirtcfg_domtrans',`
+	gen_require(`
+		type nirtcfg_t, nirtcfg_exec_t;
+	')
+
+	domtrans_pattern($1, nirtcfg_exec_t, nirtcfg_t)
+')
+
+########################################
+## <summary>
+##  Execute nirtcfg in the nirtcfg_t domain, and
+##  allow the specified role the nirtcfg domain
+## </summary>
+## <param name="role">
+##  <summary>
+##  Role allowed access.
+##  </summary>
+## </param>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`nirtcfg_run',`
+	gen_require(`
+		type nirtcfg_t;
+	')
+
+	nirtcfg_domtrans($2)
+	role $1 types nirtcfg_t;
+')
+
+########################################
+## <summary>
+##	Allow process to read nirtcfg config file. (ni-rt.ini)
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`nirtcfg_read_config',`
+	gen_require(`
+		type nirtcfg_etc_t;
+	')
+
+	files_search_etc($1)
+	allow $1 nirtcfg_etc_t:file read_file_perms;
+')
+
+########################################
+## <summary>
+##	Allow process to edit nirtcfg config file. (ni-rt.ini)
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`nirtcfg_rw_config',`
+	gen_require(`
+		type nirtcfg_etc_t;
+	')
+
+	files_search_etc($1)
+	allow $1 nirtcfg_etc_t:file rw_file_perms;
+')
+
+########################################
+## <summary>
+##	Allow process to manage the lock file for ni-rt.ini
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`nirtcfg_manage_lock',`
+	gen_require(`
+		type nirtcfg_lock_t;
+	')
+
+	allow $1 nirtcfg_lock_t:file manage_file_perms;
+	files_lock_filetrans($1, nirtcfg_lock_t, file)
+')

@@ -165,3 +165,8 @@ ifndef(`distro_redhat',`
 		wireshark_role(user_r, user_t)
 	')
 ')
+
+optional_policy(`
+	nirtcfg_run(user_r, user_t)
+')
+

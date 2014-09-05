@@ -78,3 +78,7 @@ allow ifplugd_t self:rawip_socket { create ioctl };
 optional_policy(`
 	consoletype_exec(ifplugd_t)
 ')
+
+optional_policy(`
+	nirtcfg_domtrans(ifplugd_t)
+')

@@ -1,0 +1,6 @@
+
+/usr/local/natinst/bin/nirtcfg	--		gen_context(system_u:object_r:nirtcfg_exec_t,s0)
+
+/etc/natinst/share/ni-rt.ini	--		gen_context(system_u:object_r:nirtcfg_etc_t,s0)
+
+/var/lock/ni-rt.ini.lock		--		gen_context(system_u:object_r:nirtcfg_lock_t,s0)

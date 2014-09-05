@@ -1,0 +1,54 @@
+
+policy_module(nirtcfg_natinst, 1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type nirtcfg_t;
+type nirtcfg_exec_t;
+domain_type(nirtcfg_t)
+domain_entry_file(nirtcfg_t, nirtcfg_exec_t)
+
+type nirtcfg_etc_t;
+files_config_file(nirtcfg_etc_t)
+
+type nirtcfg_lock_t;
+files_lock_file(nirtcfg_lock_t)
+
+role system_r types nirtcfg_t;
+
+########################################
+#
+# Myapp local policy
+#
+
+allow nirtcfg_t self:capability { chown dac_override fowner fsetid sys_admin sys_rawio };
+allow nirtcfg_t self:unix_dgram_socket { create connect };
+allow nirtcfg_t self:fifo_file { read write getattr ioctl };
+
+manage_files_pattern(nirtcfg_t, nirtcfg_etc_t, nirtcfg_etc_t)
+files_etc_filetrans(nirtcfg_t, nirtcfg_etc_t,{ file dir })
+allow nirtcfg_t nirtcfg_etc_t:file setattr;
+
+allow nirtcfg_t nirtcfg_lock_t:file manage_file_perms;
+files_lock_filetrans(nirtcfg_t, nirtcfg_lock_t, file)
+
+files_read_etc_files(nirtcfg_t)
+getty_use_fds(nirtcfg_t)
+init_use_fds(nirtcfg_t)
+term_use_all_terms(nirtcfg_t)
+userdom_use_user_ttys(nirtcfg_t)
+
+corecmd_exec_bin(nirtcfg_t)
+miscfiles_read_localization(nirtcfg_t)
+corecmd_exec_shell(nirtcfg_t)
+kernel_read_system_state(nirtcfg_t)
+dev_read_sysfs(nirtcfg_t)
+files_manage_boot_files(nirtcfg_t)
+
+dmidecode_domtrans(nirtcfg_t)
+files_read_default_symlinks(nirtcfg_t)
+dev_read_raw_memory(nirtcfg_t)
+files_read_isid_type_files(nirtcfg_t)
