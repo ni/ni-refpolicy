@@ -65,6 +65,16 @@ sysnet_delete_dhcpc_pid(ifplugd_t)
 sysnet_read_dhcpc_pid(ifplugd_t)
 sysnet_signal_dhcpc(ifplugd_t)
 
+# NI extra policy additions because of our custom networking code
+files_read_etc_runtime_files(ifplugd_t)
+files_rw_etc_dirs(ifplugd_t)
+files_exec_etc_files(ifplugd_t)
+hostname_exec(ifplugd_t)
+kernel_read_irq_sysctls(ifplugd_t)
+files_manage_all_locks(ifplugd_t)
+allow ifplugd_t self:capability net_raw;
+allow ifplugd_t self:rawip_socket { create ioctl };
+
 optional_policy(`
 	consoletype_exec(ifplugd_t)
 ')
