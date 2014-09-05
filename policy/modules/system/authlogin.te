@@ -130,6 +130,8 @@ seutil_dontaudit_use_newrole_fds(chkpwd_t)
 
 userdom_use_user_terminals(chkpwd_t)
 
+init_read_utmp(chkpwd_t)
+
 ifdef(`distro_ubuntu',`
 	optional_policy(`
 		unconfined_domain(chkpwd_t)
