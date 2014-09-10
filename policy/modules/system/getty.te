@@ -89,6 +89,7 @@ auth_rw_login_records(getty_t)
 init_rw_utmp(getty_t)
 init_use_script_ptys(getty_t)
 init_dontaudit_use_script_ptys(getty_t)
+init_stream_connect_script(getty_t)
 
 locallogin_domtrans(getty_t)
 

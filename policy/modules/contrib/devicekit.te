@@ -36,6 +36,9 @@ logging_log_file(devicekit_var_log_t)
 
 allow devicekit_t self:unix_dgram_socket create_socket_perms;
 
+init_dbus_send_script(devicekit_disk_t)
+init_use_fds(devicekit_disk_t)
+
 gen_require(`
 	type lib_t;
 	type udev_var_run_t;
