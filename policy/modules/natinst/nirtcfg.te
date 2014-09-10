@@ -28,6 +28,18 @@ allow nirtcfg_t self:capability { chown dac_override fowner fsetid sys_admin sys
 allow nirtcfg_t self:unix_dgram_socket { create connect };
 allow nirtcfg_t self:fifo_file { read write getattr ioctl };
 
+gen_require(`
+	type sysadm_t;
+	type sshd_t;
+	type staff_t;
+	type user_t;
+')
+
+allow nirtcfg_t sysadm_t:unix_stream_socket { read write };
+allow nirtcfg_t sshd_t:fd use;
+allow nirtcfg_t staff_t:unix_stream_socket { read write };
+allow nirtcfg_t user_t:unix_stream_socket { read write };
+
 manage_files_pattern(nirtcfg_t, nirtcfg_etc_t, nirtcfg_etc_t)
 files_etc_filetrans(nirtcfg_t, nirtcfg_etc_t,{ file dir })
 allow nirtcfg_t nirtcfg_etc_t:file setattr;

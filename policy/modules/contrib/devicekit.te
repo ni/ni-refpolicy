@@ -36,6 +36,14 @@ logging_log_file(devicekit_var_log_t)
 
 allow devicekit_t self:unix_dgram_socket create_socket_perms;
 
+gen_require(`
+	type lib_t;
+	type udev_var_run_t;
+')
+
+allow devicekit_disk_t lib_t:file execute_no_trans;
+allow devicekit_disk_t udev_var_run_t:file { read open };
+
 manage_dirs_pattern(devicekit_t, devicekit_var_run_t, devicekit_var_run_t)
 manage_files_pattern(devicekit_t, devicekit_var_run_t, devicekit_var_run_t)
 files_pid_filetrans(devicekit_t, devicekit_var_run_t, { dir file })

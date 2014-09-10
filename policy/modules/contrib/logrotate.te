@@ -48,6 +48,18 @@ allow logrotate_t self:msg { send receive };
 allow logrotate_t logrotate_lock_t:file manage_file_perms;
 files_lock_filetrans(logrotate_t, logrotate_lock_t, file)
 
+# NI policy
+
+gen_require(`
+	type crond_t;
+	type sysfs_t;
+')
+
+allow logrotate_t crond_t:unix_stream_socket { read write };
+allow logrotate_t sysfs_t:file { read open };
+
+init_stream_connect_script(logrotate_t)
+
 manage_dirs_pattern(logrotate_t, logrotate_tmp_t, logrotate_tmp_t)
 manage_files_pattern(logrotate_t, logrotate_tmp_t, logrotate_tmp_t)
 files_tmp_filetrans(logrotate_t, logrotate_tmp_t, { file dir })

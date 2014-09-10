@@ -129,3 +129,22 @@ interface(`locallogin_domtrans_sulogin',`
 
 	domtrans_pattern($1, sulogin_exec_t, sulogin_t)
 ')
+
+########################################
+## <summary>
+##	Allow the specified domain to connect to
+##	local_login with a unix socket (e.g. through NIAuth).
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`locallogin_rw_stream_sockets',`
+	gen_require(`
+		type local_login_t;
+	')
+
+	allow $1 local_login_t:unix_stream_socket rw_socket_perms;
+')

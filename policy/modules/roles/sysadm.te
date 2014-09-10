@@ -36,6 +36,9 @@ ubac_fd_exempt(sysadm_t)
 init_exec(sysadm_t)
 init_stream_connect_script(sysadm_t)
 
+getty_rw_stream_sockets(sysadm_t)
+locallogin_rw_stream_sockets(sysadm_t)
+
 # Add/remove user home directories
 userdom_manage_user_home_dirs(sysadm_t)
 userdom_home_filetrans_user_home_dir(sysadm_t)
