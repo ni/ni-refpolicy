@@ -139,6 +139,7 @@ allow auditd_t auditd_etc_t:file read_file_perms;
 manage_files_pattern(auditd_t, auditd_log_t, auditd_log_t)
 manage_lnk_files_pattern(auditd_t, auditd_log_t, auditd_log_t)
 allow auditd_t var_log_t:dir search_dir_perms;
+allow auditd_t var_log_t:lnk_file read_lnk_file_perms;
 
 manage_files_pattern(auditd_t, auditd_var_run_t, auditd_var_run_t)
 manage_sock_files_pattern(auditd_t, auditd_var_run_t, auditd_var_run_t)

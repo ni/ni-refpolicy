@@ -136,12 +136,13 @@ interface(`logging_set_audit_parameters',`
 #
 interface(`logging_read_audit_log',`
 	gen_require(`
-		type auditd_log_t;
+		type auditd_log_t, var_log_t;
 	')
 
 	files_search_var($1)
 	read_files_pattern($1, auditd_log_t, auditd_log_t)
 	allow $1 auditd_log_t:dir list_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 ')
 
 ########################################
@@ -626,6 +627,7 @@ interface(`logging_search_logs',`
 
 	files_search_var($1)
 	allow $1 var_log_t:dir search_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 ')
 
 #######################################
@@ -663,6 +665,7 @@ interface(`logging_list_logs',`
 
 	files_search_var($1)
 	allow $1 var_log_t:dir list_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 ')
 
 #######################################
@@ -682,6 +685,7 @@ interface(`logging_rw_generic_log_dirs',`
 
 	files_search_var($1)
 	allow $1 var_log_t:dir rw_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 ')
 
 #######################################
@@ -793,10 +797,12 @@ interface(`logging_append_all_logs',`
 interface(`logging_read_all_logs',`
 	gen_require(`
 		attribute logfile;
+		type var_log_t;
 	')
 
 	files_search_var($1)
 	allow $1 logfile:dir list_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 	read_files_pattern($1, logfile, logfile)
 ')
 
@@ -815,10 +821,12 @@ interface(`logging_read_all_logs',`
 interface(`logging_exec_all_logs',`
 	gen_require(`
 		attribute logfile;
+		type var_log_t;
 	')
 
 	files_search_var($1)
 	allow $1 logfile:dir list_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 	can_exec($1, logfile)
 ')
 
@@ -880,6 +888,7 @@ interface(`logging_read_generic_logs',`
 
 	files_search_var($1)
 	allow $1 var_log_t:dir list_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 	read_files_pattern($1, var_log_t, var_log_t)
 ')
 
@@ -900,6 +909,7 @@ interface(`logging_write_generic_logs',`
 
 	files_search_var($1)
 	allow $1 var_log_t:dir list_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 	write_files_pattern($1, var_log_t, var_log_t)
 ')
 
@@ -938,6 +948,7 @@ interface(`logging_rw_generic_logs',`
 
 	files_search_var($1)
 	allow $1 var_log_t:dir list_dir_perms;
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 	rw_files_pattern($1, var_log_t, var_log_t)
 ')
 
@@ -960,6 +971,7 @@ interface(`logging_manage_generic_logs',`
 
 	files_search_var($1)
 	manage_files_pattern($1, var_log_t, var_log_t)
+	allow $1 var_log_t:lnk_file read_lnk_file_perms;
 ')
 
 ########################################
