@@ -8,11 +8,17 @@ ifdef(`distro_debian',`
 
 /usr/bin/chage		--	gen_context(system_u:object_r:passwd_exec_t,s0)
 /usr/bin/chfn		--	gen_context(system_u:object_r:chfn_exec_t,s0)
+/usr/bin/chfn\.shadow	--	gen_context(system_u:object_r:chfn_exec_t,s0)
 /usr/bin/chsh		--	gen_context(system_u:object_r:chfn_exec_t,s0)
+/usr/bin/chsh\.shadow	--	gen_context(system_u:object_r:chfn_exec_t,s0)
 /usr/bin/gpasswd	--	gen_context(system_u:object_r:groupadd_exec_t,s0)
 /usr/bin/passwd		--	gen_context(system_u:object_r:passwd_exec_t,s0)
+/usr/bin/passwd\.shadow	--	gen_context(system_u:object_r:passwd_exec_t,s0)
+/usr/bin/passwd\.tinylogin	--	gen_context(system_u:object_r:passwd_exec_t,s0)
 /usr/bin/vigr		--	gen_context(system_u:object_r:admin_passwd_exec_t,s0)
+/sbin/vigr\.shadow	--	gen_context(system_u:object_r:admin_passwd_exec_t,s0)
 /usr/bin/vipw		--	gen_context(system_u:object_r:admin_passwd_exec_t,s0)
+/sbin/vipw\.shadow	--	gen_context(system_u:object_r:admin_passwd_exec_t,s0)
 
 /usr/lib/cracklib_dict.* --	gen_context(system_u:object_r:crack_db_t,s0)
 
