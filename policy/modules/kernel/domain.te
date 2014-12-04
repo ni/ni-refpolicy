@@ -104,6 +104,9 @@ term_use_controlling_term(domain)
 # list the root directory
 files_list_root(domain)
 
+# Yocto/oe-core use some var volatile links
+files_read_var_symlinks(domain)
+
 ifdef(`hide_broken_symptoms',`
 	# This check is in the general socket
 	# listen code, before protocol-specific
