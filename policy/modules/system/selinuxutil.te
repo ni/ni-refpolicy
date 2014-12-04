@@ -561,7 +561,7 @@ files_dontaudit_read_all_symlinks(setfiles_t)
 # needs to be able to read symlinks to make restorecon on symlink working
 files_read_all_symlinks(setfiles_t)
 
-fs_getattr_xattr_fs(setfiles_t)
+fs_getattr_all_fs(setfiles_t)
 fs_list_all(setfiles_t)
 fs_search_auto_mountpoints(setfiles_t)
 fs_relabelfrom_noxattr_fs(setfiles_t)
