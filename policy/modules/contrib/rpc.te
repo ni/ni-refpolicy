@@ -263,6 +263,11 @@ tunable_policy(`nfs_export_all_ro',`
 
 optional_policy(`
 	mount_exec(nfsd_t)
+	# Should domtrans to mount_t while mounting nfsd_fs_t.
+	mount_domtrans(nfsd_t)
+	# nfsd_t need to chdir to /var/lib/nfs and read files.
+	files_list_var(nfsd_t)
+	rpc_read_nfs_state_data(nfsd_t)
 ')
 
 ########################################
