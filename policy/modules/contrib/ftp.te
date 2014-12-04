@@ -147,6 +147,8 @@ role ftpdctl_roles types ftpdctl_t;
 type ftpdctl_tmp_t;
 files_tmp_file(ftpdctl_tmp_t)
 
+mls_file_write_all_levels(ftpd_t)
+
 type sftpd_t;
 domain_type(sftpd_t)
 role system_r types sftpd_t;
