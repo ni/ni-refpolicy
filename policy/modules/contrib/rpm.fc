@@ -58,4 +58,5 @@ ifdef(`distro_redhat',`
 
 ifdef(`enable_mls',`
 /usr/sbin/cpio	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+/bin/cpio.cpio	--	gen_context(system_u:object_r:rpm_exec_t,s0)
 ')
