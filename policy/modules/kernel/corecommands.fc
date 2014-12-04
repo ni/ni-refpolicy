@@ -158,6 +158,7 @@ ifdef(`distro_gentoo',`
 /sbin/insmod_ksymoops_clean	--	gen_context(system_u:object_r:bin_t,s0)
 /sbin/mkfs\.cramfs		--	gen_context(system_u:object_r:bin_t,s0)
 /sbin/nologin			--	gen_context(system_u:object_r:shell_exec_t,s0)
+/usr/sbin/nologin		--	gen_context(system_u:object_r:shell_exec_t,s0)
 
 #
 # /opt
