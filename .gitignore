@@ -13,8 +13,6 @@
 /net_contexts
 /policy.conf
 /policy.[0-9]*
-/policy/booleans.conf
-/policy/modules.conf
 /policy/modules/kernel/corenetwork.if
 /policy/modules/kernel/corenetwork.te
 /tmp/
