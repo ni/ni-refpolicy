@@ -6,7 +6,11 @@ Introduction
 
 This repository contains the NI reference policy for SELinux, based on the
 Tresys Technologies SELinux reference policy version 2.20140311 with patches
-from OpenEmbedded and National Instruments.
+from OpenEmbedded and National Instruments.  The original Tresys reference
+policy is available on GitHub
+[here](https://github.com/TresysTechnology/refpolicy), and additional
+documentation on it is available on [the corresponding
+wiki](https://github.com/TresysTechnology/refpolicy/wiki).
 
 Security Enhanced Linux (SELinux) is a mandatory access control (MAC) based
 system that uses a security policy to explicitly specify the actions that each
