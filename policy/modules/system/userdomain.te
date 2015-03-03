@@ -58,13 +58,6 @@ attribute unpriv_userdomain;
 
 attribute user_home_content_type;
 
-gen_require(`
-	type user_t;
-')
-
-getty_rw_stream_sockets(user_t)
-locallogin_rw_stream_sockets(user_t)
-
 type user_home_dir_t alias { staff_home_dir_t sysadm_home_dir_t secadm_home_dir_t auditadm_home_dir_t unconfined_home_dir_t };
 fs_associate_tmpfs(user_home_dir_t)
 files_type(user_home_dir_t)
