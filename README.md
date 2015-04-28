@@ -63,13 +63,19 @@ rather than `mls`, and change `SELINUX=enforcing` to `SELINUX=permissive` -- you
 can put SELinux into enforcing mode once your policy has been appropriately
 tweaked.
 
-4. Run `fw_setenv bootdelay 5` (where the number represents the number of
+4. /Recommended:/ Disable the udev-cache facility by commenting out the
+`DEVCACHE` setting in `/etc/default/udev-cache`. This will slow down system
+boot by up to 3 seconds, but is believed to improve compatibility with SELinux;
+see [Yocto #7506](https://bugzilla.yoctoproject.org/show_bug.cgi?id=7506) for
+more details and updated information.
+
+5. Run `fw_setenv bootdelay 5` (where the number represents the number of
 seconds for which the target will prompt to enter the bootloader before
 beginning the boot process).  This will enable verbose output to the serial
 console, and it will enable you to easily switch back to safe mode in the event
 that you get your run mode into a bad state.
 
-5. Add boot arguments to the run mode kernel to enable SELinux:
+6. Add boot arguments to the run mode kernel to enable SELinux:
 
   * (ARM-based targets):
 From the command line, run `fw_setenv othbootargs selinux=1 security=selinux`.
@@ -78,7 +84,7 @@ From the command line, run `fw_setenv othbootargs selinux=1 security=selinux`.
 Edit `/boot/runmode/bootimage.cfg`.  At the end of the line defining the
 `otherbootargs` variable, add `selinux=1 security=selinux`.
 
-6. Restart your target.  On startup, the system relabels the filesystems and
+7. Restart your target.  On startup, the system relabels the filesystems and
 then restarts.  On the second startup, the system loads SELinux in permissive
 mode and displays SELinux warnings on the console.
 
