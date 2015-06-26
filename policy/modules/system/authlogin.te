@@ -85,6 +85,9 @@ files_type(var_auth_t)
 type wtmp_t;
 logging_log_file(wtmp_t)
 
+type chkpwd_tmp_t;
+files_tmp_file(chkpwd_tmp_t)
+
 ########################################
 #
 # Check password local policy
@@ -97,15 +100,9 @@ allow chkpwd_t self:process { getattr signal };
 allow chkpwd_t shadow_t:file read_file_perms;
 files_list_etc(chkpwd_t)
 
-gen_require(`
-	type sysfs_t;
-	type tmp_t;
-')
-
-allow chkpwd_t sysfs_t:file { read open };
-allow chkpwd_t tmp_t:dir { write remove_name search add_name };
-allow chkpwd_t tmp_t:file { write create open getattr };
-allow chkpwd_t tmp_t:lnk_file read;
+manage_dirs_pattern(chkpwd_t, chkpwd_tmp_t, chkpwd_tmp_t)
+manage_files_pattern(chkpwd_t, chkpwd_tmp_t, chkpwd_tmp_t)
+files_tmp_filetrans(chkpwd_t, chkpwd_tmp_t, { file dir })
 
 kernel_read_crypto_sysctls(chkpwd_t)
 # is_selinux_enabled
