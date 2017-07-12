@@ -1,5 +1,5 @@
 
-policy_module(nirtcfg_natinst, 1.0.0)
+policy_module(nirtcfg, 1.0.0)
 
 ########################################
 #
@@ -63,4 +63,4 @@ files_manage_boot_files(nirtcfg_t)
 dmidecode_domtrans(nirtcfg_t)
 files_read_default_symlinks(nirtcfg_t)
 dev_read_raw_memory(nirtcfg_t)
-files_read_isid_type_files(nirtcfg_t)
+kernel_read_unlabeled_files(nirtcfg_t)
